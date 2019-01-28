@@ -46,3 +46,31 @@ var oddItems = document.querySelectorAll("li:nth-child(odd)")
 for(var i = 0; i < oddItems.length; i++){
     oddItems[i].style.backgroundColor = "#48D1CC"
 }
+
+// Parent node and parent element
+var itemsList = document.querySelector("#items")
+itemsList.parentNode.style.backgroundColor = "#F0F8FF"
+itemsList.parentElement.style.backgroundColor = "#F0FFF0"
+
+// Child nodes
+console.log(itemsList.childNodes) // takes elements with spaces between them ""
+itemsList.children[2].style.color = "#FF6347" // children do not include spaces
+
+// First child and first element child (same for the last)
+console.log(itemsList.firstChild) // take space
+console.log(itemsList.firstElementChild) // take first element (not space)
+
+// Next sibling and next elemtent sibling - elements on same level (same for the previous)
+console.log(itemsList.nextSibling) // take space
+console.log(itemsList.nextElementSibling) // take next element if any
+
+// Create new element
+var newDiv = document.createElement("div")
+newDiv.className = "someDiv"
+newDiv.setAttribute("title", "It is Div")
+newDiv.style.fontSize = "22px"
+var newText = document.createTextNode("It is begin")
+newDiv.appendChild(newText)
+var container = document.querySelector("header .container")
+var h1 = document.querySelector("header h1")
+container.insertBefore(newDiv, h1)
