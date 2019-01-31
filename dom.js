@@ -74,3 +74,21 @@ newDiv.appendChild(newText)
 var container = document.querySelector("header .container")
 var h1 = document.querySelector("header h1")
 container.insertBefore(newDiv, h1)
+
+// Event Listeners
+// can pass predefined function e.g. buttonClick or write in place
+var button = document.getElementById("button").addEventListener("click", function(event) {
+    console.log("Button clicked from event") 
+    document.getElementById("header-title").textContent = "Changed"
+    console.log(event) // properties of event
+
+    var output = document.getElementById("output")
+    output.innerHTML = "<h3>" + event.target.id + "</h3>"
+
+    console.log(event.clientX) // position in browser
+    console.log(event.offsetX) // position in current element
+}) 
+
+function buttonClick() {
+    console.log("Button clicked")
+}
