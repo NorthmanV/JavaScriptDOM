@@ -87,8 +87,57 @@ var button = document.getElementById("button").addEventListener("click", functio
 
     console.log(event.clientX) // position in browser
     console.log(event.offsetX) // position in current element
+
+    console.log(event.shiftKey) //returns true if user holds shift and press on the button
 }) 
 
 function buttonClick() {
     console.log("Button clicked")
 }
+
+function runEvent(event) {
+    console.log(event.type)
+    box.style.background = "rgb(" + event.offsetX + "," + event.offsetY +", 40)"
+}
+
+var blueButton = document.getElementById("button-blue")
+blueButton.addEventListener("dblclick", runEvent) // catch double click event 
+blueButton.addEventListener("mouseup", runEvent) // when button is released
+
+var box = document.getElementById("box")
+box.addEventListener("mouseenter", runEvent) // cursor enters the div
+box.addEventListener("mouseleave", runEvent) // cursor leaves the div
+box.addEventListener("mouseover", runEvent) // cursor enters another elemtent on the div
+box.addEventListener("mouseout", runEvent) // cursor leaves another element on the div
+box.addEventListener("mousemove", runEvent) // when cursor is moved
+
+function inputEvent(event) {
+    console.log(event.type)
+    var output = document.getElementById("output")
+    output.innerHTML = "<h3>" + event.target.value + "</h3>"
+}
+
+var itemInput = document.querySelector("input[type=text]")
+var form = document.querySelector("form")
+itemInput.addEventListener("keydown", inputEvent)
+itemInput.addEventListener("focus", inputEvent) // element focused
+itemInput.addEventListener("blur", inputEvent) // element unfocused
+itemInput.addEventListener("cut", inputEvent) // text cutted
+itemInput.addEventListener("paste", inputEvent) // text pasted
+itemInput.addEventListener("input", inputEvent) // all events with input
+
+function selectEvent(event) {
+    console.log(event.type)
+    console.log(event.target.value)
+}
+
+var select = document.querySelector("select")
+select.addEventListener("change", selectEvent)
+
+
+function submitEvent(event) {
+    event.preventDefault() // prevent default implementation of submit form
+    console.log(event.type)
+}
+
+form.addEventListener("submit", submitEvent)
